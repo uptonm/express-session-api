@@ -9,13 +9,9 @@ module.exports = app => {
     })
   );
 
-  app.get(
-    '/auth/google/callback',
-    passport.authenticate('google'),
-    (req, res) => {
-      res.redirect('/follow-up'); // User logs in, send them to the dashboard
-    }
-  );
+  app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+    res.redirect('/follow-up'); // User logs in, send them to the dashboard
+  });
 
   app.get('/api/current_user', (req, res) => {
     if (req.user) {
